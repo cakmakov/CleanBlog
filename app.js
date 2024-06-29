@@ -26,12 +26,19 @@ app.get('/', async (req, res) => {
   });
 });
 
+app.get('/posts/:id', async (req, res) => {
+  const post = await Posts.findById(req.params.id);
+  res.render('post', { post });
+});
+
 app.get('/about', (req, res) => {
   res.render('about');
 });
+
 app.get('/post', (req, res) => {
   res.render('post');
 });
+
 app.get('/add_post', (req, res) => {
   res.render('add_post');
 });
